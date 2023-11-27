@@ -1,0 +1,34 @@
+{%extends 'cbase.html'%}
+{%block body_block%}
+
+{%for order in orders%}
+
+
+<div class="row">
+
+    <div class="col-4 mt-2">
+        <img src="{{order.product.image.url}}" class="rounded float-start" alt="..." width="80%"height="275px">
+    </div>
+    <div class="col-4 mt-3">
+        <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Name: {{order.product.name}}</li>
+    <li class="list-group-item">₹ {{order.product.price}}</li>
+          <li class="list-group-item">{{order.product.specification}}</li>
+
+    <li class="list-group-item">{{order.date}}</li>
+  </ul>
+</div>
+    </div>
+    <div class="col-2 text-light mt-2">
+       <strong> {{order.status}}</strong>
+        {%if order.status == "delivered" %}
+        <a href="{%url 'review' order.product.id%}"class="btn btn-warning">Post Review</a>
+        {%endif%}
+    </div>
+
+</div>
+<hr>
+{%endfor%}
+
+{%endblock%}

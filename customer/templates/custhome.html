@@ -1,0 +1,38 @@
+{%extends 'cbase.html'%}
+{%block body_block%}
+
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="col-4"></div>
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="col-4 bg-success text-white">
+        {{message}}
+    </div>
+    {% endif %}
+    <div class="col-4"></div>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="row">
+    {%for mobile in mobiles%}
+    <div class="col-4 mt-2">
+        <div class="card" style="width: 18rem;">
+            <img src="{{mobile.image.url}}" class="card-img-top" alt="..." height="300px" width="1005">
+            <div class="card-body">
+                <h5 class="card-title">Brand : {{mobile.brand}}</h5>
+                <p class="card-text">Mobile Name : {{mobile.name}}</p>
+                <p class="card-text">Specification : {{mobile.specification}}</p>
+                <p class="card-text">Ram : {{mobile.ram}}</p>
+                <p class="card-text">Storage : {{mobile.storage}}</p>
+                <p class="card-text">Price : ₹ {{mobile.price}}</p>
+                <p class="card-text">Quantity : {{mobile.quantity}}</p>
+                <a href="{%url 'productdetail' mobile.id%}" class="btn btn-success">View</a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock%}

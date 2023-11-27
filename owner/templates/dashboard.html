@@ -1,0 +1,82 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row mt-2">
+    <div class="col-6">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    <strong>New Orders {{neworders|length}}</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <tr>
+                            <th>Product Name</th>
+                            <th>User Name</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        {%for order in neworders%}
+                        <tr>
+                            <td>{{order.product.brand}}</td>
+                            <td>{{order.user.username}}</td>
+                            <td>{{order.date}}</td>
+                            <td>
+                                <a href="{%url 'orderdetail' order.id%}"class="btn btn-success">View</a>
+                                <a href="{%url 'orderedit' order.id%}"class="btn btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                    Accordion Item #2
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-6">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                        aria-expanded="true" aria-controls="collapseThree">
+                    Accordion Item #3
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                        aria-expanded="true" aria-controls="collapseFour">
+                    Accordion Item #4
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
